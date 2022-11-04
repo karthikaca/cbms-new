@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            margin-top: 20px;
+            margin-right: 20px;
+            margin-bottom: 20px;
+            padding: 20px;
+        }
+
+        .heading {
+            margin-bottom: 30px;
+        }
+
+        button {
+            background-color: black;
+            color: white;
+            margin-left: 20px;
+            height: 50px;
+        }
+
+        .content {
+            width: 60vw;
+            height: 80vh;
+            background-image: url('taxi1.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            color: white;
+            font-size: 50px;
+            margin-top: -20px;
+        }
+
+
+        h2 {
+            margin-bottom: 20px;
+            text-align: center;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+
+        .parent {
+            display: flex;
+            margin-top: 60px;
+            margin-left: 50px;
+            margin-right: 50px;
+        }
+
+
+
+        #submit {
+            background-color: black;
+            color: white;
+            border-radius: 30px;
+            height: 40px;
+            font-size: 20px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+        .pages {
+            background-color: orange;
+            height: 7vh;
+            width: 100vw;
+            display: flex;
+
+
+        }
+
+        li {
+            display: inline-block;
+            margin-right: 20px;
+            margin-top: 0;
+
+        }
+
+        ul {
+            margin-left: 800px;
+        }
+
+        .login {
+            background-color: rgba(1, 1, 1, 0.97);
+            padding-top: 55px;
+            height: 35vh;
+            width: 40vw;
+            color: white;
+            margin-left: 100px;
+            margin-top: 10px;
+
+        }
+        #btn-login{
+            border-radius: 20px;
+            border: none;
+            width: 100px;
+            height:30px;
+            margin-top: 10px;
+            margin-left: 150px;
+        }
+    </style>
+</head>
+
+<body style="background-color: black;">
+    <div class="pages">
+        <ul>
+            <li><a href="homepage.html" style="text-decoration:none;color: black;">Home</a></li>
+            <li><a href=loginpage.html style="text-decoration:none;color: black;">Login</a></li>
+            <li><a href="registration.html" style="text-decoration:none;color: black;">Sign up</a></li>
+            <li><a href="search.html" style="text-decoration:none;color: black;">Booking</a></li>
+            
+
+        </ul>
+
+    </div>
+
+    <div class="parent">
+        <div class="content"></div>
+        <div class="login">
+
+           
+            <form name="loginform" id="loginform" action="search.html">
+                <h2 style="font-size: 50px;">Login</h2>
+                <table style="align-items: center;">
+                    <tr>
+                    </tr>
+
+                    <td style="margin-bottom: 40px;"><label style="font-size: 20px;">User Name</label></td>
+
+                    <td><input type="email" id="username" name="username" class="form-control"
+                            placeholder="me@example.com" minlength="5" maxlength="50" required
+                            style="margin-bottom: 15px;width: 250px;height: 30px;"></td>
+                    </tr>
+
+                    <tr>
+                        <td><label style="font-size: 20px;">Password</label></td>
+                        <td><input type="password" id="password" name="password" minlength="5" maxlength="50" required
+                                style="margin-bottom: 15px;width: 250px;height: 30px;"></td>
+                    </tr>
+                </table>
+                   <input type="submit" id="btn-login" name="login">
+
+                  
+              
+            </form>
+        </div>
+    </div>
+    <script>
+        let username = document.forms['loginform']['username'];
+        let password = document.forms['loginform']['password'];
+        let login = document.getElementById('btn-login');
+        document.querySelectorAll('#loginform input').forEach(e => {
+            e.addEventListener('keyup', function (event) {
+                if (!username.validity.valid || !password.validity.valid) {
+                    login.setAttribute('disabled', true);
+                }
+                else {
+                    login.removeAttribute('disabled');
+                }
+            })
+        })
+
+    </script>
+</body>
+
+</html>
