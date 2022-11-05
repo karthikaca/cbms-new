@@ -1,0 +1,39 @@
+USE cab;
+CREATE TABLE cab (
+cab_id INT PRIMARY KEY NOT NULL,
+cab_no VARCHAR(10) NOT NULL,
+cab_model VARCHAR(50) NOT NULL,
+cab_total_capacity INT  NOT NULL);
+ CREATE TABLE driver (
+ driver_id INT PRIMARY KEY NOT NULL,
+ driver_name VARCHAR(50)  NOT NULL,
+ license_no VARCHAR(50) UNIQUE NOT NULL,
+ license_expiry_date DATE,
+ driver_dob DATE,
+ driver_mobile INT NOT NULL,
+ driver_address VARCHAR(10) NOT NULL,
+ driver_email VARCHAR (50) NOT null,
+cab_no INT NOT NULL,
+FOREIGN KEY (cab_no) REFERENCES cab(Cab_id));
+ CREATE TABLE passenger(
+passenger_id INT PRIMARY KEY NOT NULL,
+passenger_name VARCHAR(50) NOT NULL,
+passenger_username VARCHAR(50) NOT NULL,
+passenger_email VARCHAR(50) NOT NULL UNIQUE,
+passenger_password VARCHAR(50) NOT NULL,
+passenger_mobile INT UNIQUE NOT NULL,
+passenger_address VARCHAR(150) NOT NULL,
+passenger_dob DATE);
+CREATE TABLE ride_schedule(
+ ride_id INT PRIMARY KEY NOT NULL,
+ ride_from VARCHAR(50) NOT NULL,
+ ride_to VARCHAR(50) NOT NULL,
+ ride_start_time  TIME,
+ ride_end_time  TIME,
+ ride_date DATE,
+ ride_cost INT NOT NULL,
+ ride_number INT NOT NULL, 
+ FOREIGN KEY (ride_number) REFERENCES cab(cab_id),
+ passenger_no INT NOT NULL,
+ FOREIGN KEY (passenger_no) REFERENCES passenger(passenger_id));
+ 
